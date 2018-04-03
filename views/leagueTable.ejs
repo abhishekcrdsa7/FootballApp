@@ -1,0 +1,82 @@
+<% include ./partials/header %>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="list-group">
+                <%var curr;%>
+                       <% comp.forEach(function(name){ %>
+                           <% if(name.id == id){%>
+                                <div>
+                                   
+                                     <li class="list-group-item active"><a href="/competitions/<%=name.id%>/fixtures" style="color: white"><%=name.caption%></a></li>
+                                </div>
+                            <% }else{ %>
+                                <div>
+                                     <li class="list-group-item"><a href="/competitions/<%=name.id%>/fixtures"><%=name.caption%></a></li>
+                                </div>
+                            <% } %>
+                    <% });%>    
+            </div>
+        </div>
+        
+        
+<div class="col-lg-7">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope"col"  >Position</th>
+          <th scope="col" class="stand-team">Team</th>
+          <th scope="col" >Played</th>
+          <th scope="col" >Won</th>
+          <th scope="col" >Lost</th>
+          <th scope="col" >Draw</th>
+          <th scope="col" >Points</th>
+        </tr>
+      </thead>
+      <tbody>
+          <%var pos = 1;%>
+          
+          <%table.forEach(function(team){ %>
+          <tr>
+          <th scope="row"><%=pos%></th>
+          <td class="stand-team flex-col">
+              <div>
+                  <%if(team.crestURI){%>
+                  <img id="team-stand" src="<%=team.crestURI%>">
+              <% } %>
+              </div>
+          <%=team.teamName%>
+          </td>
+          <td class="stand-team"><%=team.playedGames%></td>
+          <td class="stand-team"><%=team.wins%></td>
+          <td class="stand-team"><%=team.losses%></td>
+          <td class="stand-team"><%=team.draws%></td>
+          <td class="stand-team"><%=team.points%></td>
+        </tr>
+        <%pos++;%>
+          <% });%>
+      </tbody>
+    </table>
+</div>
+
+        <div class="col-lg-2">
+                <div class="list-group">
+                    <div>
+                        <li class="list-group-item"><a href="/competitions/<%=id%>/fixtures">Fixtures</a></li>
+                    </div>
+                    <%if(id != 464){%>
+                    <div>
+                        <li class="list-group-item active"><a id="right-link" href='/competitions/+<%=id%>+/leagueTable'>Team Standings</a></li>
+                    </div>
+                    <% } %>
+                    <div>
+                        <li class="list-group-item"><a href="/competitions/<%=id%>/teams">Teams</a></li>
+                    </div>
+                                    
+                                
+                </div>
+            </div>
+    </div>
+</div>    
+<% include ./partials/footer %>

@@ -1,0 +1,127 @@
+<% include ./partials/header %>
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="list-group">
+                <%var curr;%>
+                
+                       <% comp.forEach(function(name){ %>
+                           <% if(name.id == id){%>
+                                <div>
+                                    <%curr = name.currentMatchday%>
+                                     <li class="list-group-item active"><a href="/competitions/<%=name.id%>/fixtures" style="color: white"><%=name.caption%></a></li>
+                                </div>
+                            <% }else{ %>
+                                <div>
+                                     <li class="list-group-item"><a href="/competitions/<%=name.id%>/fixtures"><%=name.caption%></a></li>
+                                </div>
+                            <% } %>
+                    <% });%>    
+            </div>
+        </div>
+        
+            <div class="col-lg-7">
+                
+                <%var day;%>
+    
+                <% bdy.forEach(function(fix){ %>
+                    <% if(fix.matchday >= curr){ %>
+                    <% if(day == undefined || day == fix.matchday){ %>
+                    <div class="row">
+                        <div class="card black-card">
+                            <div class="card-body title-card">
+                                  <h5 class="card-title title-card"><span>Home</span>
+                                  <span>Matchday <%=fix.matchday%></span>
+                                  <span>Away</span></h5>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                        <%day = fix.matchday+1;%>
+                    <% } %>
+                    <%var num = fix._links.homeTeam.href.length-1, i, j;%>
+                                    <%for(i = num; i>=0;i--){%>
+                                        <%if(fix._links.homeTeam.href.charAt(i) == '/'){%>
+                                            <% break;%>
+                                    <% } } %>
+                                    
+                                    <%var num1 = fix._links.awayTeam.href.length-1;%>
+                                    <%for(j = num1; j>=0;j--){%>
+                                        <%if(fix._links.awayTeam.href.charAt(j) == '/'){%>
+                                            <% break;%>
+                                    <% } } %>
+                                    
+                    <%var home = "/teams/"+fix._links.homeTeam.href.substring(i+1);%>
+                    <%var away = "/teams/"+fix._links.awayTeam.href.substring(j+1);%>
+                     <% if(fix.status == "FINISHED"){ %>
+                        <div class="col-lg-12">
+                            <div class="card" >
+                                <div class="card-body">
+                                      <h5 class="card-title match"><span><a class="black" href= <%=home%>><%=fix.homeTeamName%></a></span>
+                                      <span><a class="black" href=<%=away%>><%=fix.awayTeamName%></a></span></h5>
+                                      <h5 class="card-title match"><span><%=fix.result.goalsHomeTeam%></span>
+                                      <span><%=fix.result.goalsAwayTeam%></span></h5>
+                                      <p class="card-text"><%= fix.date.substring(8,10) %>-<%= fix.date.substring(5,7) %>-<%= fix.date.substring(0,4) %></p>
+                                      <p class="card-text">FULL_TIME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }else if(fix.status == "IN_PLAY"){ %>
+                        <div class="col-lg-12">
+                            <div class="card" >
+                                <div class="card-body">
+                                      <h5 class="card-title match"><span><a class="black" href=<%=home%>><%=fix.homeTeamName%></a></span>
+                                      <span><i class="fas fa-bars inplay"></i></span>
+                                      <span><a class="black" href=<%=away%>><%=fix.awayTeamName%></a></span></h5>
+                                      <h5 class="card-title match"><span><%=fix.result.goalsHomeTeam%></span>
+                                      <span><%=fix.result.goalsAwayTeam%></span></h5>
+                                      <p class="card-text"><%= fix.date.substring(8,10) %>-<%= fix.date.substring(5,7) %>-<%= fix.date.substring(0,4) %></p>
+                                      <p class="card-text">IN_PLAY</p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }else{ %>
+                        <div class="col-lg-12">
+                            <div class="card" >
+                                <div class="card-body">
+                                      <h5 class="card-title match"><span><a class="black" href=<%=home%>><%=fix.homeTeamName%></a></span>
+                                      <span><a class="black" href=<%=away%>><%=fix.awayTeamName%></a></span></h5>
+                                     <% if(fix.status != "POSTPONED"){%>
+                                      <p class="card-text"><%= fix.date.substring(8,10) %>-<%= fix.date.substring(5,7) %>-<%= fix.date.substring(0,4) %></p>
+                                      <% }else{%>
+                                      <p class="card-text"><%=fix.status%></p>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                    
+                <% } %>
+                <% }); %>
+            </div>
+                
+            
+            <div class="col-lg-2">
+                <div class="list-group">
+                    <div>
+                        <li class="list-group-item active"><a id="right-link" href="/competitions/<%=id%>/fixtures">Fixtures</a></li>
+                    </div>
+                    <%if(id != 464){%>
+                    <div>
+                        <li class="list-group-item"><a  href="/competitions/<%=id%>/leagueTable">Team Standings</a></li>
+                    </div>
+                    <% } %>
+                    <div>
+                        <li class="list-group-item"><a href="/competitions/<%=id%>/teams">Teams</a></li>
+                    </div>
+                                    
+                                
+                </div>
+            </div>
+                
+    </div>
+</div>
+<% include ./partials/footer %>

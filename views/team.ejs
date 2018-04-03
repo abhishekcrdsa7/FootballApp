@@ -1,0 +1,94 @@
+<% include ./partials/header %>
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="list-group">
+                                
+                        <div class="card" style="width: 100%">
+                            <div class="card-body title-card">
+                                  <h5 class="player"><span>Players</span></h5>
+                            </div>
+                        </div>
+                  
+                       <%players.forEach(function(name){ %>
+                                <div>
+                                     <li class="list-group-item"><%=name.name%></li>
+                                </div>
+                    <% });%>    
+            </div>
+        </div>
+            <div class="col-lg-7">
+                <div class="row">
+                        <div class="card  black-card">
+                            <div class="card-body title-card">
+                                  <h5 class="card-title title-card"><span>Home</span>
+                                  <span>Away</span></h5>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                <% fixture.forEach(function(fix){ %>
+                     <% if(fix.status == "FINISHED"){ %>
+                        <div class="col-lg-12">
+                            <div class="card  " >
+                                <div class="card-body">
+                                      <h5 class="card-title match"><span><%=fix.homeTeamName%></span>
+                                      <span><%=fix.awayTeamName%></span></h5>
+                                      <h5 class="card-title match"><span><%=fix.result.goalsHomeTeam%></span>
+                                      <span><%=fix.result.goalsAwayTeam%></span></h5>
+                                      <p class="card-text"><%= fix.date.substring(8,10) %>-<%= fix.date.substring(5,7) %>-<%= fix.date.substring(0,4) %></p>
+                                      <p class="card-text">FULL_TIME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }else if(fix.status == "IN_PLAY"){ %>
+                        <div class="col-lg-12">
+                            <div class="card  " >
+                                <div class="card-body">
+                                      <h5 class="card-title match"><span><%=fix.homeTeamName%></span>
+                                      <span><i class="fas fa-bars inplay"></i></span>
+                                      <span><%=fix.awayTeamName%></span></h5>
+                                      <h5 class="card-title match"><span><%=fix.result.goalsHomeTeam%></span>
+                                      <span><%=fix.result.goalsAwayTeam%></span></h5>
+                                      <p class="card-text"><%= fix.date.substring(8,10) %>-<%= fix.date.substring(5,7) %>-<%= fix.date.substring(0,4) %></p>
+                                      <p class="card-text">IN_PLAY</p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }else{ %>
+                        <div class="col-lg-12">
+                            <div class="card  " >
+                                <div class="card-body ">
+                                      <h5 class="card-title match"><span><%=fix.homeTeamName%></span>
+                                      <span><%=fix.awayTeamName%></span></h5>
+                                     <% if(fix.status != "POSTPONED"){%>
+                                      <p class="card-text"><%= fix.date.substring(8,10) %>-<%= fix.date.substring(5,7) %>-<%= fix.date.substring(0,4) %></p>
+                                      <% }else{%>
+                                      <p class="card-text"><%=fix.status%></p>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% }); %>
+            </div>
+                
+            
+            <div class="col-lg-2">
+                <div class="list-group">
+                    <div>
+                        <a class="list-group-item active" id="right-link" href="/competitions">Back</a>
+                    </div>
+                </div>
+                <div id="logo">
+                    <img src="<%=logo%>" style="height: 160px">
+                </div>
+                <div>
+                    <h5 id="team-name"><%=name%></h5>
+                </div>
+            </div>
+    </div>
+</div>
+<% include ./partials/footer %>

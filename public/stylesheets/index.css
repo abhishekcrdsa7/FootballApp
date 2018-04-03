@@ -1,0 +1,198 @@
+ .slideshow {
+  background-color: rgb(0, 0, 0);
+  width: 870px;
+  height: 450px;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 50px;
+}
+
+
+ .slideshow li { 
+  width: 870px;
+  height: 450px;
+  overflow: hidden;
+  position: absolute;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://static.dnaindia.com/sites/default/files/styles/full/public/2018/02/25/655047-cristiano-ronaldo-gareth-bale-afp.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://www.dw.com/image/41437609_303.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://www.betstudy.com/img/post_1250.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(
+  https://img.maximummedia.ie/joe_co_uk/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvbWVkaWEtam9lY291ay5tYXhpbXVtbWVkaWEuaWUuczMuYW1hem9uYXdzLmNvbVxcXC93cC1jb250ZW50XFxcL3VwbG9hZHNcXFwvMjAxN1xcXC8xMFxcXC8wMzA3NTcyMVxcXC9HZXR0eUltYWdlcy04NDgzMTk3MjguanBnXCIsXCJ3aWR0aFwiOjc2NyxcImhlaWdodFwiOjQzMSxcImRlZmF1bHRcIjpcImh0dHBzOlxcXC9cXFwvd3d3LmpvZS5jby51a1xcXC9hc3NldHNcXFwvaW1hZ2VzXFxcL2pvZWNvdWtcXFwvbm8taW1hZ2UucG5nP3Y9NVwifSIsImhhc2giOiI2MDVmM2IwZjk1MzlkN2NiMDU1M2U4NTA4ZjRlNTIzYzc4Y2Y1MjU5In0=/gettyimages-848319728.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(
+  https://i2-prod.mirror.co.uk/incoming/article11560371.ece/ALTERNATES/s615b/Juventus-v-Real-Madrid-UEFA-Champions-League-Final.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
+
+.list-group-item {
+  text-decoration: none;
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: none;
+  outline: none;
+  
+}
+
+#right-link {
+  text-decoration: none;
+  color: white;
+  outline: none;
+}
+
+
+.navbar {
+  margin-bottom: 20px;
+  
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: white;
+  text-decoration: none;
+  outline: none;
+}
+
+
+.card-text {
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 10px;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title-card {
+  color: white;
+  background-color: #212529;
+}
+
+#team-logo {
+  padding-right: 20px;
+  height: 30px;
+  width: 50px;
+  
+}
+
+#team-stand {
+  height: 30px;
+  width: 30px;
+}
+
+.inplay {
+  animation-delay: 0s;
+  animation-name: load;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes load {
+  0% {
+    
+  }
+  25% {
+    transform: translateX(10px) scaleX(1.5); 
+  }
+  50% {
+    transform: translateX(0px) scaleX(1);
+  }
+  75% {
+    transform: translateX(-10px) scaleX(1.5);
+  }
+  100% {
+    transform: translateX(0px) scaleX(1);
+  }
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stand-team {
+  text-align: center;
+}
+
+
+.player {
+  color: white;
+  background-color: #212529;
+  text-align: center;
+}
+
+.black-card {
+  position: relative;
+  left: 31px;
+  width: 603px;
+  border: none;
+}
+
+#logo {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#team-name {
+  text-align: center;
+}
+
+.black {
+  color: #212529;
+}

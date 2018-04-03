@@ -1,0 +1,103 @@
+body {
+    background-color: rgb(0, 0, 0);
+    font-family: 'Patua One', cursive;
+    overflow: hidden;
+}
+
+#heading {
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 35px;
+}
+
+
+.fas {
+    font-size: 100px;
+    background: none;
+    color: black;
+}
+
+#landing-logo {
+  text-align: center;
+  margin-top: 250px;
+}
+
+.fas:hover {
+    transform: rotate(720deg);
+    transition-duration: 3s;
+    cursor: pointer;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: -1;
+  animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(
+  https://www.thenational.ae/image/policy:1.689398:1513783158/FIFA-Club-World-Cup-Final-Real-Madrid-vs-Gremio-FBPA.JPG?f=16x9&w=1200&$p$f$w=e2a8ccd) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(
+  https://media.contentapi.ea.com/content/www-easports/en_US/fifa/ultimate-team/news/2017/fut-17-tots-epl/_jcr_content/headerImages/image.img.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://dfl.de/dfl/images/header-und-logos/BL_Teaser_BL-Logo_Pitch_HD.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://sportmenu.net/wp-content/uploads/2017/09/Serie-A.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://dailytimes.ng/wp-content/uploads/2017/08/UEFA-Champions-League-Stadium-Wallpaper.jpg);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
